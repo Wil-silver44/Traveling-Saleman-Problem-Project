@@ -17,7 +17,14 @@ class SimulationRunner
 		double percentMutation;
 	public:
 		SimulationRunner();
+		void SetNumCities(int someNum);
+		void SetNumTours(int someNum);
+		void SetNumGenerations(int someNum);
+		void SetPercentMutation(double somePercent);
 		int GetNumCities();
+		int GetNumTours();
+		int GetNumGenerations();
+		double GetPercentMutation();
 		void RunBruteForce();
 		void RunGenetic();
 		void PrintResult();

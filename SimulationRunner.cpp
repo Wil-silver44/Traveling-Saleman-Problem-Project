@@ -6,20 +6,43 @@ SimulationRunner::SimulationRunner()
 {
 	cout << "Please enter the following values:" << endl;
 	cout << "The number of cities to run: ";
-	cin >> this->numCities;
+	SetNumCities(cin);
 
 	cout << "\nHow many individual tours are in a given generation: ";
-	cin >> this->numTours;
+	SetNumTours(cin);
 
 	cout << "\nHow many generations to run: ";
-	cin >> this->numGenerations;
+	SetNumGenerations(cin);
 
 	cout << "\nWhat percentage of a generation should be comprised of mutated tours: ";
-	cin >> this->percentMutation;
+	SetPercentMutation(cin);
 }
 
+//Mutators
+void SimulationRunner::SetNumCities(int someNum)
+{ this->numCities = someNum; }
+
+void SimulationRunner::SetNumTours(int someNum)
+{ this->numTours = someNum; }
+
+void SimulationRunner::SetNumGenerations(int someNum)
+{ this->numGenerations = someNum; }
+
+void SimulationRunner::SetPercentMutation(double somePercent)
+{ this->percentMutation = somePercent; }
+
+//Accessors
 int SimulationRunner::GetNumCities()
 { return this->numCities; }
+
+int SimulationRunner::GetNumTours()
+{ return this->numTours; }
+
+int SimulationRunner::GetNumGenerations()
+{ return this->numGenerations; }
+
+double SimulationRunner::GetPercentMutation()
+{ return this->percentMutation; }
 
 void SimulationRunner::RunBruteForce()
 {
