@@ -2,13 +2,17 @@
 
 // header comment goes here
 
-CityGraph::CityGraph(string fileName, int numCities)
+CityGraph::CityGraph()
 {
-	this->fileReader.open(fileName);
+	this->fileReader.open(DISTANCE_FILE);
+}
+
+void CityGraph::FillGraph(int numCities)
+{
 	if(this->fileReader.is_open())
 	{
-		double dataHolder = 0.0;
-		
+		double dataHolder = 0;
+
 		for(int i = 0; i < numCities; ++i)
 		{
 			for(int j = 0; j < numCities; ++j)
@@ -26,7 +30,7 @@ CityGraph::CityGraph(string fileName, int numCities)
 		}
 	}
 
-	this->fileReader.close();
+	this->fileReader.close();	
 }
 
 double CityGraph::GetCityDistance(int indexA, int indexB)

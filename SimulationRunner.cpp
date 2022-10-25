@@ -4,18 +4,24 @@
 
 SimulationRunner::SimulationRunner()
 {
+	int numHolder;
+	double percentHolder;
 	cout << "Please enter the following values:" << endl;
 	cout << "The number of cities to run: ";
-	SetNumCities(cin);
+	cin >> numHolder;
+	SetNumCities(numHolder);
 
 	cout << "\nHow many individual tours are in a given generation: ";
-	SetNumTours(cin);
+	cin >> numHolder;
+	SetNumTours(numHolder);
 
 	cout << "\nHow many generations to run: ";
-	SetNumGenerations(cin);
+	cin >> numHolder;
+	SetNumGenerations(numHolder);
 
 	cout << "\nWhat percentage of a generation should be comprised of mutated tours: ";
-	SetPercentMutation(cin);
+	cin >> percentHolder;
+	SetPercentMutation(percentHolder);
 }
 
 //Mutators
@@ -45,8 +51,10 @@ double SimulationRunner::GetPercentMutation()
 { return this->percentMutation; }
 
 void SimulationRunner::RunBruteForce()
-{
-	cout << "Totally running brute force ;p" << endl;
+{ 
+	BruteForceSim testSim(GetNumCities(), GetNumTours());
+	testSim.RunSim();
+        this->bruteForceOptPath = testSim.GetOptPath();	
 }
 
 void SimulationRunner::RunGenetic()
@@ -57,7 +65,7 @@ void SimulationRunner::RunGenetic()
 void SimulationRunner::PrintResult()
 {
 	cout << "The number of cities run: " << GetNumCities() << endl;
-	cout << "Optimal cost of Brute force: IMPLEMENT BRUTEFORCE" << endl;
+	cout << "Optimal cost of Brute force: " << this->bruteForceOptPath << endl;
         cout << "Time the brute force algorithm took to run: IMPLEMENT BRUTEFORCE" << endl;
 	cout << "Optimal cost of ga: IMPLEMENT GENETIC" << endl;
 	cout << "Time the ga took to run: IMPLEMENT GENETIC" << endl;
