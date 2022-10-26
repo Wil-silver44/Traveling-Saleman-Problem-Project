@@ -1,6 +1,7 @@
 #ifndef SIMULATIONRUNNER_HPP
 #define SIMULATIONRUNNER_HPP
-#include<iostream>
+#include <iostream>
+#include "timer.hpp"
 #include "BruteForceSim.hpp"
 
 //header comment goes here
@@ -17,7 +18,9 @@ class SimulationRunner
 		int numGenerations;
 		double percentMutation;
 		double bruteForceOptPath;
+		double bruteForceRunTime;
 		double geneticOptPath;
+		Timer timeKeeper;
 	public:
 		SimulationRunner();
 		void SetNumCities(int someNum);

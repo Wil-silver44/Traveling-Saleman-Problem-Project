@@ -6,7 +6,7 @@ CXX = g++
 
 CXXFLAGS = -g -Wall
 
-OBJECTS = SimulationRunner.o BruteForceSim.o CityGraph.o
+OBJECTS = SimulationRunner.o BruteForceSim.o CityGraph.o timer.o
 
 TESTS = GraphTest
 

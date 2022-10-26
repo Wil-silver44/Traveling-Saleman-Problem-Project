@@ -30,7 +30,7 @@ void BruteForceSim::CalcOptPath()
 		someTour[i] = i;
 	}
 
-	while(next_permutation(someTour, someTour + this->numCities))
+	while(next_permutation(someTour + 1, someTour + this->numCities))
 	{
 
 		for(int i = 0; i < this->numCities; ++i)
@@ -49,16 +49,6 @@ void BruteForceSim::CalcOptPath()
 		if(pathStore < this->optPath)
 		{
 			this->optPath = pathStore;
-			std::cout << "optimal path is: [";
-			
-			for(int u = 0; u < this->numCities; ++u)
-			{
-				std::cout << " ";
-				std::cout << someTour[u];
-			}
-			
-			std::cout << " ]" << std::endl;
-
 			pathStore = 0;
 		}
 

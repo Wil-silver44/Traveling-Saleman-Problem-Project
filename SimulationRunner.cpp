@@ -53,7 +53,10 @@ double SimulationRunner::GetPercentMutation()
 void SimulationRunner::RunBruteForce()
 { 
 	BruteForceSim testSim(GetNumCities(), GetNumTours());
+	this->timeKeeper.start();
 	testSim.RunSim();
+	this->timeKeeper.stop();
+	this->bruteForceRunTime = timeKeeper.elapsed();
         this->bruteForceOptPath = testSim.GetOptPath();	
 }
 
@@ -66,7 +69,7 @@ void SimulationRunner::PrintResult()
 {
 	cout << "The number of cities run: " << GetNumCities() << endl;
 	cout << "Optimal cost of Brute force: " << this->bruteForceOptPath << endl;
-        cout << "Time the brute force algorithm took to run: IMPLEMENT BRUTEFORCE" << endl;
+        cout << "Time the brute force algorithm took to run: " << this->bruteForceRunTime << endl;
 	cout << "Optimal cost of ga: IMPLEMENT GENETIC" << endl;
 	cout << "Time the ga took to run: IMPLEMENT GENETIC" << endl;
 	cout << "Percent of optimal that ga Produced: IMPLEMENT GENETIC" <<endl;	

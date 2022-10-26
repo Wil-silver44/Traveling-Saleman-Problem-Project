@@ -1,6 +1,6 @@
 #include <sys/time.h>
 
-#include "Timer.hpp"
+#include "timer.hpp"
 
 
 double Timer::now () {
