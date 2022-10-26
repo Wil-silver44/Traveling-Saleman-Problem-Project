@@ -8,12 +8,15 @@ CXXFLAGS = -g -Wall
 
 OBJECTS = SimulationRunner.o BruteForceSim.o CityGraph.o timer.o
 
-TESTS = GraphTest
+TESTS = GraphTest GATest
 
 main: main.cpp $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 GraphTest: Tests/GraphTest.cpp CityGraph.o
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+GATest: Tests/GATest.cpp GenAlgSim.o CityGraph.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:

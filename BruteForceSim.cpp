@@ -3,7 +3,7 @@
 
 //header comment goes here
 
-BruteForceSim::BruteForceSim(int numCities, int numTours)
+BruteForceSim::BruteForceSim(int numCities)
 {
 	this->numCities = numCities;
 	this->numTours = numTours;
@@ -49,6 +49,14 @@ void BruteForceSim::CalcOptPath()
 		if(pathStore < this->optPath)
 		{
 			this->optPath = pathStore;
+			std::cout << "Optimal path found is: [";
+			for(int k = 0; k < this->numCities; ++k)
+			{
+				std::cout << " " << someTour[k];
+			}
+
+			std::cout << " " << someTour[0] << "]" << std::endl;
+
 			pathStore = 0;
 		}
 

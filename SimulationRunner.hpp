@@ -19,6 +19,8 @@ class SimulationRunner
 		double percentMutation;
 		double bruteForceOptPath;
 		double bruteForceRunTime;
+		double genAlgOptPath;
+		double genAlgRunTime;
 		double geneticOptPath;
 		Timer timeKeeper;
 	public:

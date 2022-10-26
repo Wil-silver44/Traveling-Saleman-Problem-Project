@@ -16,7 +16,7 @@ class BruteForceSim
 	double optPath;
 	void CalcOptPath();
 	public:
-	BruteForceSim(int numCities, int numTours);
+	BruteForceSim(int numCities);
 	void RunSim();
 	double GetOptPath();
 };
