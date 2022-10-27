@@ -2,6 +2,8 @@
 #define GENALGSIM_HPP
 #include <algorithm>
 #include <vector>
+#include <random>
+#include <iostream>
 #include "CityGraph.hpp"
 
 //header comment goes here
@@ -17,9 +19,11 @@ class GenAlgSim
 	int numGens;	//the number of generations
 	double percentMutation;	//the percentage of a given generation that are mutated tours rather than permutated.
 	vector<int> tourPath;	//storage for a given tourPath
+        vector<int> permElite; //storage for respective elites per generation.
+	vector<int> muteElite;
 	CityGraph simGraph;
 	double optPath;
-	void CalcOptPath();
+	void CalcOptPath(int caseNum);
 	void MutatePath();
 	void PermutatePath();
 	public:

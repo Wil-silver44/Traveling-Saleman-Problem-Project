@@ -9,11 +9,17 @@ int main()
 {
 	cout << "testing genetic sim with:" << endl;
 	cout << "Cities: 10" << endl;
-	cout << "Tours per gen: 6" << endl;
-	cout << "Generations: 2" << endl;
+	cout << "Tours per gen: 10" << endl;
+	cout << "Generations: 10" << endl;
 	cout << "percent Mutation: 0.5" << endl;
 
-	GenAlgSim testSim(10, 6, 2, 0.5);
+	GenAlgSim testSim(10, 10, 10, 0.5);
+
+	cout << "attempting to run sim..." << endl << endl;
+
+	testSim.RunSim();
+
+	cout << "Simulation ran. optimal cost: " << testSim.GetOptPath() << endl;
 
 	return 0;
 }

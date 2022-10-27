@@ -3,6 +3,7 @@
 #include <iostream>
 #include "timer.hpp"
 #include "BruteForceSim.hpp"
+#include "GenAlgSim.hpp"
 
 //header comment goes here
 

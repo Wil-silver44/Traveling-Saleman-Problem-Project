@@ -4,24 +4,42 @@
 
 SimulationRunner::SimulationRunner()
 {
-	int numHolder;
-	double percentHolder;
+	int numHolder = -10;
+	double percentHolder = -10;
 	cout << "Please enter the following values:" << endl;
-	cout << "The number of cities to run: ";
-	cin >> numHolder;
+	
+	while(numHolder < 1 || numHolder > 20)
+	{
+		cout << "The number of cities to run[1,20]: ";
+		cin >> numHolder;
+	}
+
 	SetNumCities(numHolder);
 
-	cout << "\nHow many individual tours are in a given generation: ";
-	cin >> numHolder;
-	SetNumTours(numHolder);
+	numHolder = -10;
+	
+	while(numHolder < 10 || numHolder > 500)
+	{
+		cout << "\nHow many individual tours are in a given generation[10,500]: ";
+		cin >> numHolder;
+		SetNumTours(numHolder);
+	}
+	
+	numHolder = -10;
 
-	cout << "\nHow many generations to run: ";
-	cin >> numHolder;
-	SetNumGenerations(numHolder);
+	while(numHolder < 10 || numHolder > 500)
+	{
+		cout << "\nHow many generations to run[10,500]: ";
+		cin >> numHolder;
+		SetNumGenerations(numHolder);
+	}
 
-	cout << "\nWhat percentage of a generation should be comprised of mutated tours: ";
-	cin >> percentHolder;
-	SetPercentMutation(percentHolder);
+	while(percentHolder < 0.0 || percentHolder > 1.0)
+	{
+		cout << "\nWhat percentage of a generation should be comprised of mutated tours[0.0,1.0]: ";
+		cin >> percentHolder;
+		SetPercentMutation(percentHolder);
+	}
 }
 
 //Mutators
@@ -62,10 +80,11 @@ void SimulationRunner::RunBruteForce()
 
 void SimulationRunner::RunGenetic()
 {
-	//GenAlgorithm someAlg;
+	GenAlgSim testGA(GetNumCities(), GetNumTours(), GetNumGenerations(), GetPercentMutation());
 	this->timeKeeper.start();
-	cout << "Totally running genetic ;p" << endl;
-	//this->genAlgOptPath = testGA.GetOptPath();
+	testGA.RunSim();
+	//cout << "Totally running genetic ;p" << endl;
+	this->genAlgOptPath = testGA.GetOptPath();
 	this->timeKeeper.stop();
 	this->genAlgRunTime = timeKeeper.elapsed();
 }
@@ -75,7 +94,7 @@ void SimulationRunner::PrintResult()
 	cout << "The number of cities run: " << GetNumCities() << endl;
 	cout << "Optimal cost of Brute force: " << this->bruteForceOptPath << endl;
         cout << "Time the brute force algorithm took to run: " << this->bruteForceRunTime << "s" << endl;
-	cout << "Optimal cost of ga: IMPLEMENT GENETIC" << endl;
+	cout << "Optimal cost of ga: " << this->genAlgOptPath << endl;
 	cout << "Time the ga took to run: " << this->genAlgRunTime << "s"  << endl;
-	cout << "Percent of optimal that ga Produced: IMPLEMENT GENETIC" <<endl;	
+	cout << "Percent of optimal that ga Produced: " << ((this->genAlgOptPath / this->bruteForceOptPath) * 100.0) << "%" << endl;	
 }

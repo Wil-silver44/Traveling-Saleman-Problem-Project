@@ -49,6 +49,7 @@ void BruteForceSim::CalcOptPath()
 		if(pathStore < this->optPath)
 		{
 			this->optPath = pathStore;
+			/*
 			std::cout << "Optimal path found is: [";
 			for(int k = 0; k < this->numCities; ++k)
 			{
@@ -56,7 +57,7 @@ void BruteForceSim::CalcOptPath()
 			}
 
 			std::cout << " " << someTour[0] << "]" << std::endl;
-
+			*/
 			pathStore = 0;
 		}
 

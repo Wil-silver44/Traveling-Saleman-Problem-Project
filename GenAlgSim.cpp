@@ -18,7 +18,11 @@ GenAlgSim::GenAlgSim(int numCities, int numTours, int numGens, double percentMut
 
 void GenAlgSim::RunSim()
 {
-	//calculate cost of the default path, and store in optPath for comparison.
+	//storage for respective elites.
+	vector<int> permElite;
+	vector<int> muteElite;
+
+	//calculate cost of the default path, and store in optPath for comparisoni, counts as 1 permutation.
 	for(int i = 0; i < this->numCities; ++i)
 	{
 		if((i + 1) != this->numCities)
@@ -30,31 +34,46 @@ void GenAlgSim::RunSim()
 			this->optPath += this->simGraph.GetCityDistance(this->tourPath.at(i), this->tourPath.at(0));
 		}
 	}
+
+	std::cout << "calculated default path cost: line 38." << std::endl;
 	
+	//assigns tourpath as the starting elite value for both types of transformation.
+	this->permElite = this->tourPath;
+	this->muteElite = this->tourPath;
 	
 	//get permutation/mutation split for each generation
 	int numMutations = this->numTours * this->percentMutation;
 	int numPermutations = (this->numTours - numMutations) - 1;
+	
+	std::cout << "stored number of permutations and mutations per generation: line 48." << std::endl;
 
 	//loop n times where n is the number of generations decided by the user.
 	for(int g = 0; g < this->numGens; ++g)
 	{
+		//assigns elite at start of generations calculations
+		this->tourPath.assign(this->permElite.begin(), this->permElite.end());
+
 		//loop through permutation portion of tours
 		for(int p = 0; p < numPermutations; ++p)
 		{
-
+			PermutatePath(); //get the next permutation
+			CalcOptPath(1); //calculate cost, and store permutation if optimal.
 		}
 		
+		//assigns elite at start of generations calculations
+		this->tourPath.assign(this->muteElite.begin(), this->muteElite.end());
+
 		//loop through mutation portion of tours
 		for(int m = 0; m < numMutations; ++m)
 		{
-
+			MutatePath(); //get net mutation
+			CalcOptPath(2); //calculates cost, and store mutation if optimal
 		}
 	}
 
 }
 
-void GenAlgSim::CalcOptPath()
+void GenAlgSim::CalcOptPath(int caseNum)
 {
 	//create temp storage for potential path cost
 	double costStore = 0;
@@ -71,15 +90,50 @@ void GenAlgSim::CalcOptPath()
  		}
 	}
 
-	if(costStore < this->optPath)
+	if(costStore < GetOptPath())
 	{
 		this->optPath = costStore;
+
+		switch(caseNum)
+		{
+			case 1: //its a permutation
+			this->permElite.assign(this->tourPath.begin(), this->tourPath.end());;
+			break;
+
+			case 2: //its a mutation
+			this->muteElite.assign(this->tourPath.begin(), this->tourPath.end());
+			break;
+
+			default:
+			throw "how did you break this?";
+			break;
+		}
 	}
 }
 
 void GenAlgSim::MutatePath()
 {
+	//randomly select two cities within the path, and swap them.
+	
+	std::random_device rand; //generates seed for random num generator
+	std::mt19937 gen(rand()); //Standard mersenne twister engine seeded with the above random device.
+	std::uniform_int_distribution<> distribute(1, (this->numCities - 1)); //generates random ints uniformly distributed along a closed range.
+	
+	int swapHolderA;
+	int swapHolderB;
+	int indexA = distribute(gen);
+	int indexB = distribute(gen);
 
+	swapHolderA = this->tourPath.at(indexA);
+	swapHolderB = this->tourPath.at(indexB);
+
+	this->tourPath.erase(this->tourPath.begin() + indexA);
+	this->tourPath.insert((this->tourPath.begin() + indexA), swapHolderB);
+
+	this->tourPath.erase(this->tourPath.begin() + indexB);
+	this->tourPath.insert((this->tourPath.begin() + indexB), swapHolderA);
+
+	//while avoiding swaps that have already been made?
 }
 
 void GenAlgSim::PermutatePath()
