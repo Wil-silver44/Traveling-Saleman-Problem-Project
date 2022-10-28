@@ -3,10 +3,17 @@
 #include <algorithm>
 #include <vector>
 #include <random>
-#include <iostream>
 #include "CityGraph.hpp"
 
-//header comment goes here
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: GenAlgSim.hpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - defines the attributes and methods
+ *   for running a Geneticly inspired algorithm for the traveling salesman problem.
+ *
+ ***************************************************************/
 
 using std::next_permutation;
 using std::vector;

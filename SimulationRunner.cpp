@@ -83,7 +83,6 @@ void SimulationRunner::RunGenetic()
 	GenAlgSim testGA(GetNumCities(), GetNumTours(), GetNumGenerations(), GetPercentMutation());
 	this->timeKeeper.start();
 	testGA.RunSim();
-	//cout << "Totally running genetic ;p" << endl;
 	this->genAlgOptPath = testGA.GetOptPath();
 	this->timeKeeper.stop();
 	this->genAlgRunTime = timeKeeper.elapsed();

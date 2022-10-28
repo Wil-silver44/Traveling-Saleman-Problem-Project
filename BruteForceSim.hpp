@@ -3,7 +3,15 @@
 #include <algorithm>
 #include "CityGraph.hpp"
 
-//Header comment goes here
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: BruteForceSim.hpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - defines the attributes and methods
+ *   for running a brute force simulation of the traveling salesman problem
+ *
+ ***************************************************************/
 
 using std::next_permutation;
 
@@ -11,7 +19,6 @@ class BruteForceSim
 {
 	private:
 	int numCities;
-	int numTours;
 	CityGraph simGraph;
 	double optPath;
 	void CalcOptPath();

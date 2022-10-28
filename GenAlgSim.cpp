@@ -1,6 +1,15 @@
 #include "GenAlgSim.hpp"
 
-//header comment goes here
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: GenAlgSim.cpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - implements the attributes and methods
+ *   for running a Geneticly inspired algorithm for the traveling salesman problem.
+ *   defined in GenAlgSim.hpp
+ *
+ ***************************************************************/
 
 GenAlgSim::GenAlgSim(int numCities, int numTours, int numGens, double percentMutation)
 {
@@ -34,8 +43,6 @@ void GenAlgSim::RunSim()
 			this->optPath += this->simGraph.GetCityDistance(this->tourPath.at(i), this->tourPath.at(0));
 		}
 	}
-
-	std::cout << "calculated default path cost: line 38." << std::endl;
 	
 	//assigns tourpath as the starting elite value for both types of transformation.
 	this->permElite = this->tourPath;
@@ -44,8 +51,6 @@ void GenAlgSim::RunSim()
 	//get permutation/mutation split for each generation
 	int numMutations = this->numTours * this->percentMutation;
 	int numPermutations = (this->numTours - numMutations) - 1;
-	
-	std::cout << "stored number of permutations and mutations per generation: line 48." << std::endl;
 
 	//loop n times where n is the number of generations decided by the user.
 	for(int g = 0; g < this->numGens; ++g)
@@ -117,7 +122,8 @@ void GenAlgSim::MutatePath()
 	
 	std::random_device rand; //generates seed for random num generator
 	std::mt19937 gen(rand()); //Standard mersenne twister engine seeded with the above random device.
-	std::uniform_int_distribution<> distribute(1, (this->numCities - 1)); //generates random ints uniformly distributed along a closed range.
+	std::uniform_int_distribution<> distribute(1, (this->numCities - 1)); 
+	//generates random ints uniformly distributed along a closed range.
 	
 	int swapHolderA;
 	int swapHolderB;
@@ -132,8 +138,6 @@ void GenAlgSim::MutatePath()
 
 	this->tourPath.erase(this->tourPath.begin() + indexB);
 	this->tourPath.insert((this->tourPath.begin() + indexB), swapHolderA);
-
-	//while avoiding swaps that have already been made?
 }
 
 void GenAlgSim::PermutatePath()

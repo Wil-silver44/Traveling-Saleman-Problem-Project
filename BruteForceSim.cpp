@@ -1,12 +1,20 @@
 #include "BruteForceSim.hpp"
 #include <iostream>
 
-//header comment goes here
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: BruteForceSim.cpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - implements the attributes and methods
+ *   for running a brute force algorithm for the traveling salesman problem
+ *   defined in BruteForceSim.hpp
+ *
+ ***************************************************************/
 
 BruteForceSim::BruteForceSim(int numCities)
 {
 	this->numCities = numCities;
-	this->numTours = numTours;
 	this->optPath = 9999;	
 }
 
@@ -49,15 +57,6 @@ void BruteForceSim::CalcOptPath()
 		if(pathStore < this->optPath)
 		{
 			this->optPath = pathStore;
-			/*
-			std::cout << "Optimal path found is: [";
-			for(int k = 0; k < this->numCities; ++k)
-			{
-				std::cout << " " << someTour[k];
-			}
-
-			std::cout << " " << someTour[0] << "]" << std::endl;
-			*/
 			pathStore = 0;
 		}
 

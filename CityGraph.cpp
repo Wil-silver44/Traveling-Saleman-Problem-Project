@@ -1,6 +1,14 @@
 #include "CityGraph.hpp"
 
-// header comment goes here
+ /***************************************************************
+  *   Student Name: Wilver Santos
+  *   File Name: CityGraph.cpp
+  *   Assignment number: Project 3
+  *
+  *   Other comments regarding the file - implements the attributes and methods
+  *   for an adjacency-matrix based graph defined in CityGraph.hpp
+  *
+  ***************************************************************/
 
 CityGraph::CityGraph()
 {

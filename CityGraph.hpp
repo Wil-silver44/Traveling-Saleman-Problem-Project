@@ -3,7 +3,15 @@
 #include <fstream>
 #include <string>
 
-//header comment goes here.
+ /***************************************************************
+  *   Student Name: Wilver Santos
+  *   File Name: CityGraph.hpp
+  *   Assignment number: Project 3
+  *
+  *   Other comments regarding the file - defines the attributes and methods 
+  *   for an adjacency-matrix based graph weighted with doubles representing distances between cities
+  *
+  ***************************************************************/
 
 using std::string;
 using std::ifstream;

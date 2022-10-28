@@ -1,7 +1,14 @@
 #include <sys/time.h>
-
 #include "timer.hpp"
 
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: Timer.cpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - simple timer class, provided by TA.
+ *
+ ***************************************************************/
 
 double Timer::now () {
   struct timeval time;

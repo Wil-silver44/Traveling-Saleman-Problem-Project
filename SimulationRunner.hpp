@@ -5,7 +5,15 @@
 #include "BruteForceSim.hpp"
 #include "GenAlgSim.hpp"
 
-//header comment goes here
+/***************************************************************
+ *   Student Name: Wilver Santos
+ *   File Name: SimulationRunner.hpp
+ *   Assignment number: Project 3
+ *
+ *   Other comments regarding the file - defines methods and attributes fo taking in user input,
+ *   running the two simulations.
+ *
+ ***************************************************************/
 
 using std::cout;
 using std::cin;
@@ -22,7 +30,6 @@ class SimulationRunner
 		double bruteForceRunTime;
 		double genAlgOptPath;
 		double genAlgRunTime;
-		double geneticOptPath;
 		Timer timeKeeper;
 	public:
 		SimulationRunner();
