@@ -150,16 +150,3 @@ time the brute force algorithm took
 cost from the ga  
 time the ga took to run  
 percent of optimal (eg: 120%) that the ga produced  
-
-### Deliverables
-
-You will submit the following for this project:
-1. A User's manual that describes how to set up and run your program.
-2. A UML diagram reflecting the final layout of your program.
-3. Your source code in C++. 
-4. Results file: An Excel spreadsheet containing the results from each run (for 10, 11, 12, etc cities) with one row for the 10 city, 11 city, 12 city, etc run. The column headers should be the 6 items output by a single run. This table is a summary of the data for all the individual  outputs from 10 cities, 11 cities, etc.
-5. A makefile for the project
-
-### Files
-   [Distances.txt](https://uwf.instructure.com/courses/38127/files/8791952?wrap=1)
-   [A graphical representation how the various generations are created](https://uwf.instructure.com/courses/38127/files/8791967?wrap=1)
